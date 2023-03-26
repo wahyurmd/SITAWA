@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+$primaryColor: #16bce6;
+$lighterColor: #f7f7ff;
+$darkColor: #2f3542;
+$bodyColor: #dff9ff;
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: $darkColor;
+    height: 100%;
+    background-color: $bodyColor;
+}
+
+nav {
+    background-color: $primaryColor;
+
+    .navbar-brand {
+        font-weight: 600;
+    }
+}
+
+.bg-breadcrumb {
+    background-color: $primaryColor;
+    border-radius: 5px;
+}
+
+h6 {
+    margin-bottom: -2px;
+}
+
+.row {
+    margin: 0;
+}
+
+.card {
+    border-radius: 10px;
+
+    .card-img-top {
+        padding-top: 15px;
+        width: 80px;
+    }
+
+    .img-test {
+        padding-top: 15px;
+        width: 220px;
+    }
+
+    .a-custom {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+.reminder-card {
+    background-color: $primaryColor;
+    color: $lighterColor;
+
+    .card-title {
+        background-color: #e9f730;
+        width: 90px;
+        border-radius: 7px;
+        margin: 15px 15px 5px 15px;
+        font-weight: 600;
+        color: $darkColor;
+    }
+
+    .card-body {
+        padding: 5px 15px 10px 15px;
+        text-align: justify;
+        line-height: 1.2;
+    }
+}
+
+.card-profile {
+    background-color: $primaryColor;
+    color: $lighterColor;
+    font-weight: 600;
+}
+
+.form-profile {
+    border: none;
+}
+
+.btn-color {
+    background-color: $primaryColor;
+    color: $lighterColor;
+}
+
+footer{
+    background-color: $primaryColor;
+    color: $lighterColor;
+}

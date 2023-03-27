@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(UserController::class)->group(function() {
         Route::get('/profile', 'profile')->name('profile');
         Route::get('/profile-update', 'profileUpdate')->name('profile.update');
-        Route::post('/profile-update', 'profileAction')->name('profile.action');
+        Route::put('/profile-update/{id}', 'profileAction')->name('profile.action');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

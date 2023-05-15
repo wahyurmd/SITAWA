@@ -20,4 +20,14 @@ class HomeController extends Controller
     {
         return view('result_test');
     }
+
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function howtodo()
+    {
+        return view('instruction');
+    }
 }

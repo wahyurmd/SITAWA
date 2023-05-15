@@ -24,22 +24,162 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-body text-center m-3">
+                    <div class="card-body m-3">
                         <form action="#" method="POST">
+                            @csrf
                             <fieldset>
-                                <h4>Tes Ishihara</h4>
-                                <img src="{{ asset('assets/img/ishihara-test/Ishihara-Plate-01-38.jpg') }}" class="img-test">
-                                <div class="row mt-4">
-                                    <div class="col-8">
-                                        <div class="form-group">
-                                            <input type="text" name="" class="form-control" placeholder="Masukkan jawaban">
-                                        </div>
+                                <div class="text-center">
+                                    <h4>Tes Ishihara</h4>
+                                </div>
+                                <section id="image-carousel" class="splide" aria-label="Ishihara Test">
+                                    <div class="splide__arrows">
+                                        {{-- <button class="splide__arrow splide__arrow--prev">
+                                            Sebelumnya
+                                        </button>
+                                        <button class="splide__arrow splide__arrow--next">
+                                            Selanjutnya
+                                        </button> --}}
                                     </div>
-                                    <div class="col-4">
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-color">Submit</button>
-                                        </div>
+
+                                    <div class="splide__track">
+                                        <ul class="splide__list">
+                                            <li class="splide__slide">
+                                                <div class="text-center">
+                                                    <img src="{{ asset('assets/img/ishihara-test/Ishihara-Plate-01-38.jpg') }}" class="img-test">
+                                                </div>
+                                                <div class="mt-4">
+                                                    <label for="Question">Apa yang terlihat dalam plate diatas?</label>
+                                                </div>
+                                                <div class="row mt-4">
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                12
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                25
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                2
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                15
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="splide__slide">
+                                                <div class="text-center">
+                                                    <img src="{{ asset('assets/img/ishihara-test/Ishihara-Plate-01-38.jpg') }}" class="img-test">
+                                                </div>
+                                                <div class="mt-4">
+                                                    <label for="Question">Apa yang terlihat dalam plate diatas?</label>
+                                                </div>
+                                                <div class="row mt-4">
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                12
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                25
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                2
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                15
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="splide__slide">
+                                                <div class="text-center">
+                                                    <img src="{{ asset('assets/img/ishihara-test/Ishihara-Plate-01-38.jpg') }}" class="img-test">
+                                                </div>
+                                                <div class="mt-4">
+                                                    <label for="Question">Apa yang terlihat dalam plate diatas?</label>
+                                                </div>
+                                                <div class="row mt-4">
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                12
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                25
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2">
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                2
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="choice">
+                                                            <label class="form-check-label" for="choice">
+                                                                15
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
+                                </section>
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-color">Submit</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -49,4 +189,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    const submitBtn = document.querySelector('.btn-color');
+    submitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const selectedValue = document.querySelector('input[name="choice"]:checked').value;
+        const sliderValueInput = document.querySelector('input[name="slider_value"]');
+        sliderValueInput.value = selectedValue;
+        document.forms[0].submit();
+    });
+</script>
 @endsection

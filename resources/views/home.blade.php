@@ -48,7 +48,7 @@
         <div class="col">
             <div class="card">
                 <center>
-                    <a href="hasil-tes.html" class="a-custom">
+                    <a href="{{ route('about') }}" class="a-custom">
                         <img src="{{ asset('assets/img/search.png') }}" class="card-img-top">
                         <div class="card-body">
                             <h6 class="card-title fw-semibold">Tentang Buta Warna</h6>
@@ -60,10 +60,10 @@
         <div class="col">
             <div class="card">
                 <center>
-                    <a href="hasil-tes.html" class="a-custom">
+                    <a href="{{ route('howtodo') }}" class="a-custom">
                         <img src="{{ asset('assets/img/pin.png') }}" class="card-img-top">
                         <div class="card-body">
-                            <h6 class="card-title fw-semibold">Cara Pengerjaan</h6>
+                            <h6 class="card-title fw-semibold">Cara Mengerjakan</h6>
                         </div>
                     </a>
                 </center>

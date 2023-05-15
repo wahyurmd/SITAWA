@@ -8,3 +8,12 @@
         });
     }
 </script>
+<script>
+    document.addEventListener( 'DOMContentLoaded', function () {
+        new Splide('#image-carousel', {
+            perPage: 1,
+            arrows: true,
+            pagination: false,
+        }).mount();
+    });
+  </script>

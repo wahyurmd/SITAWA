@@ -89,7 +89,24 @@ h6 {
     color: $lighterColor;
 }
 
-footer{
-    background-color: $primaryColor;
-    color: $lighterColor;
+.fs-7 {
+    font-size: 12px;
+}
+
+.splide__slide img {
+    width: 100%;
+    height: auto;
+}
+
+.splide__arrow {
+    position: absolute;
+    top: 20px;
+}
+
+.splide__arrow--prev {
+    left: 20px;
+}
+
+.splide__arrow--next {
+    right: 20px;
 }

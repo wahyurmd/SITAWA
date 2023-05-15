@@ -21,6 +21,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', 'index')->name('beranda');
         Route::get('/ishihara-test', 'ishiharaTest')->name('ishihara.test');
         Route::get('/result', 'resultTest')->name('result');
+        Route::get('/about', 'about')->name('about');
+        Route::get('/instruction', 'howtodo')->name('howtodo');
     });
 
     Route::controller(UserController::class)->group(function() {

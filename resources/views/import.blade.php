@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SITAWA - Masuk</title>
+    <title>SITAWA - Import Plate Data</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous">
@@ -19,34 +19,29 @@
 
     <div class="container">
         <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
+            <div class="col-md-10">
                 <div class="card">
-                    <div class="card-body text-center m-3">
-                        <img src="{{ asset('assets/img/user.png') }}" class="card-img-top mb-3">
-                        <h4 class="mb-5">Masuk</h4>
-                        <form action="{{ route('login.action') }}" method="POST">
+                    <div class="card-body">
+                        <h5 class="card-title">Import Ishihara Data</h5>
+                        <form action="{{ route('import.ishihara') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
-                                <input type="email" class="form-control @error('email') @enderror" id="email" name="email" placeholder="Email">
-                                @error('email')
-                                    <div class="alert alert-warning mt-2">
-                                        {{ $message }}
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control @error('import_ishihara') @enderror" id="inputGroupFile02" name="import_ishihara">
+                                        <label class="input-group-text" for="inputGroupFile02">Browse</label>
+                                        @error('import_ishihara')
+                                            <div class="alert alert-warning mt-2">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
-                            </div>
-                            <div class="form-group mb-4">
-                                <input type="password" class="form-control @error('password') @enderror" id="password" name="password" placeholder="Kata sandi">
-                                @error('password')
-                                    <div class="alert alert-warning mt-2">
-                                        {{ $message }}
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-color btn-block">Import</button>
                                     </div>
-                                @enderror
-                            </div>
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn btn-color btn-block">Login</button>
-                            </div>
-                            <div class="text-center">
-                                <a href="{{ route('register') }}">Belum punya akun?</a>
+                                </div>
                             </div>
                         </form>
                     </div>

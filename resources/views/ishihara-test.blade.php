@@ -32,38 +32,30 @@
                                     <h4>Tes Ishihara</h4>
                                 </div>
                                 <section id="image-carousel" class="splide" aria-label="Ishihara Test">
-                                    <div class="splide__arrows">
-                                        {{-- <button class="splide__arrow splide__arrow--prev">
-                                            Sebelumnya
-                                        </button>
-                                        <button class="splide__arrow splide__arrow--next">
-                                            Selanjutnya
-                                        </button> --}}
-                                    </div>
-
                                     <div class="splide__track">
                                         <ul class="splide__list">
+                                            @foreach ($ishiharaPlate as $data)
                                             <li class="splide__slide">
                                                 <div class="text-center">
-                                                    <img src="{{ asset('assets/img/ishihara-test/Ishihara-Plate-01-38.jpg') }}" class="img-test">
+                                                    <img src="{{ asset('assets/img/ishihara/' . $data->plate) }}" class="img-test">
                                                 </div>
                                                 <div class="mt-4">
-                                                    <label for="Question">Apa yang terlihat dalam plate diatas?</label>
+                                                    <label for="Question">{{ $data->desc }}</label>
                                                 </div>
                                                 <div class="row mt-4">
                                                     <div class="col">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                12
+                                                            <input class="form-check-input" type="radio" name="choice{{ $loop->index }}" id="pil_a{{ $loop->index }}">
+                                                            <label class="form-check-label" for="pil_a{{ $loop->index }}">
+                                                                {{ $data->pil_a }}
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                25
+                                                            <input class="form-check-input" type="radio" name="choice{{ $loop->index }}" id="pil_b{{ $loop->index }}">
+                                                            <label class="form-check-label" for="pil_b{{ $loop->index }}">
+                                                                {{ $data->pil_b }}
                                                             </label>
                                                         </div>
                                                     </div>
@@ -71,110 +63,24 @@
                                                 <div class="row mt-2">
                                                     <div class="col">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                2
+                                                            <input class="form-check-input" type="radio" name="choice{{ $loop->index }}" id="pil_c{{ $loop->index }}">
+                                                            <label class="form-check-label" for="pil_c{{ $loop->index }}">
+                                                                {{ $data->pil_c }}
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                15
+                                                            <input class="form-check-input" type="radio" name="choice{{ $loop->index }}" id="pil_d{{ $loop->index }}">
+                                                            <label class="form-check-label" for="pil_d{{ $loop->index }}">
+                                                                {{ $data->pil_d }}
                                                             </label>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <input type="hidden" name="answer_key{{ $loop->index }}" value="{{ $data->answer_key }}" class="form-control">
                                             </li>
-                                            <li class="splide__slide">
-                                                <div class="text-center">
-                                                    <img src="{{ asset('assets/img/ishihara-test/Ishihara-Plate-01-38.jpg') }}" class="img-test">
-                                                </div>
-                                                <div class="mt-4">
-                                                    <label for="Question">Apa yang terlihat dalam plate diatas?</label>
-                                                </div>
-                                                <div class="row mt-4">
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                12
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                25
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-2">
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                2
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                15
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="splide__slide">
-                                                <div class="text-center">
-                                                    <img src="{{ asset('assets/img/ishihara-test/Ishihara-Plate-01-38.jpg') }}" class="img-test">
-                                                </div>
-                                                <div class="mt-4">
-                                                    <label for="Question">Apa yang terlihat dalam plate diatas?</label>
-                                                </div>
-                                                <div class="row mt-4">
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                12
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                25
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-2">
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                2
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="choice">
-                                                            <label class="form-check-label" for="choice">
-                                                                15
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </section>

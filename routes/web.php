@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -40,5 +41,10 @@ Route::middleware(['guest'])->group(function () {
         Route::post('/login', 'loginAction')->name('login.action');
         Route::get('/register', 'register')->name('register');
         Route::post('/register', 'registerAction')->name('register.action');
+
     });
+
+    // import excel
+    Route::get('/import', [ImportController::class, 'import'])->name('import');
+    Route::post('/import-ishihara', [ImportController::class, 'importIshihara'])->name('import.ishihara');
 });

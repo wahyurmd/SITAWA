@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IshiharaPlate;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,11 @@ class HomeController extends Controller
 
     public function ishiharaTest()
     {
-        return view('ishihara-test');
+        $ishiharaPlate = IshiharaPlate::inRandomOrder()->take(18 )->get();
+
+        return view('ishihara-test', compact(
+            'ishiharaPlate'
+        ));
     }
 
     public function resultTest()

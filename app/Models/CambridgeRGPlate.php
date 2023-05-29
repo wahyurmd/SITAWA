@@ -9,14 +9,12 @@ class CambridgeRGPlate extends Model
 {
     use HasFactory;
 
+    protected $table = 'cambridge_rg_plates';
     protected $fillable = [
         'desc',
         'plate',
-        'pil_a',
-        'pil_b',
-        'pil_c',
-        'pil_d',
         'answer_key',
+        'keyword',
         'status',
     ];
 }

@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cambridge_rg_plates', function (Blueprint $table) {
+        Schema::create('cambridge_by_plates', function (Blueprint $table) {
             $table->id();
             $table->string('desc');
             $table->string('plate');
-            $table->string('pil_a')->nullable();
-            $table->string('pil_b')->nullable();
-            $table->string('pil_c')->nullable();
-            $table->string('pil_d')->nullable();
             $table->string('answer_key');
-            $table->integer('status');
+            $table->string('keyword');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cambridge_rg_plates');
+        Schema::dropIfExists('cambridge_by_plates');
     }
 };

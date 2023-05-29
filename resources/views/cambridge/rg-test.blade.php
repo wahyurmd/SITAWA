@@ -25,7 +25,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body m-3">
-                        <form action="{{ route('store.ishihara') }}" method="POST">
+                        <form action="{{ route('store.cambridge.rg') }}" method="POST">
                             @csrf
                             <fieldset>
                                 <div class="text-center">
@@ -37,11 +37,10 @@
                                             @php
                                                 $no = 1;
                                             @endphp
-                                            @foreach ($ishiharaPlate as $index => $data)
+                                            @foreach ($cambridgePlate as $index => $data)
                                             <li class="splide__slide">
                                                 <div class="text-center">
-                                                    <img src="{{ asset('assets/img/ishihara/' . $data->plate) }}" class="img-test">
-                                                    <input type="hidden" class="form-control" name="ishihara_plates_id[{{ $index }}]" value="{{ $data->id }}">
+                                                    <img src="{{ asset('assets/img/cambridge-rg/' . $data->plate) }}" class="img-test">
                                                 </div>
                                                 <div class="mt-4">
                                                     <label for="Question">{{ $no++ . '. ' . $data->desc }}</label>
@@ -59,13 +58,16 @@
                                                         <option value="Serong Kanan Bawah">Serong Kanan Bawah</option>
                                                     </select>
                                                 </div>
+                                                <input type="text" class="form-control" name="cambridgerg_plates_id[{{ $index }}]" value="{{ $data->id }}">
+                                                <input type="hidden" class="form-control" name="keywords[{{ $index }}]" value="{{ $data->keyword }}">
                                             </li>
                                             @endforeach
                                         </ul>
                                     </div>
                                 </section>
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                <input type="hidden" name="start_time" value="{{ $time }}">
+                                <input type="hidden" class="form-control" name="id" value="{{ $testId }}">
+                                <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" class="form-control" name="start_time" value="{{ $time }}">
                                 <div class="text-center mt-4">
                                     <button type="submit" class="btn btn-color">Submit</button>
                                 </div>

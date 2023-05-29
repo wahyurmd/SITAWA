@@ -2,7 +2,7 @@
 @extends('template.master')
 
 <!-- Set Title -->
-@section('title', 'SINADU - Profil')
+@section('title', 'Profil - SITAWA')
 
 <!-- Main Content -->
 @section('content')

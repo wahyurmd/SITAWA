@@ -2,7 +2,7 @@
 @extends('template.master')
 
 <!-- Set Title -->
-@section('title', 'SITAWA - Hasil Tes Ishihara')
+@section('title', 'Hasil Tes Ishihara - SITAWA')
 
 <!-- Main Content -->
 @section('content')
@@ -22,50 +22,55 @@
 
     <div class="container">
         <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="card mb-5">
                     <div class="card-body m-3">
                         <div class="text-center">
-                            @if ($resultTotal > 5 && $resultTotal < 16)
-                                <h4 class="fw-bold">Anda menderita buta warna parsial</h4>
-                            @elseif ($resultTotal < 5)
-                                <h4 class="fw-bold">Anda menderita buta total</h4>
-                            @else
-                                <h4 class="fw-bold">Penglihatan mata Anda normal</h4>
-                            @endif
-                            <h5>{{ $formattedPercentage . '%' }} ({{ $resultTotal . '/' . $totalPlates }})</h5>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Plate</th>
-                                            <th scope="col">Your Answer</th>
-                                            <th scope="col">Correct Answer</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $no = 1;
-                                        @endphp
-                                        @foreach ($result as $data)
-                                            <tr>
-                                                <th scope="row">{{ $no++ }}</th>
-                                                <td>
-                                                    <img src="{{ asset('assets/img/ishihara/' . $data->plate) }}" class="img-fluid" alt="{{ $data->plate }}" width="100" height="100">
-                                                </td>
-                                                <td>{{ $data->user_answer }}</td>
-                                                <td>{{ $data->answer_key }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                            <h4 class="fw-bold">Hasil Test Ishihara</h4>
+                        </div>
+                        <div class="table-responsive pt-5">
+                            <table class="table">
+                                <tr>
+                                    <th width="20%">Akurasi (%)</th>
+                                    <td>:</td>
+                                    <td>{{ $formattedPercentage }} %</td>
+                                </tr>
+                                <tr>
+                                    <th width="20%">Total Plates</th>
+                                    <td>:</td>
+                                    <td>{{ $totalPlates }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="20%">Jawaban Benar</th>
+                                    <td>:</td>
+                                    <td>{{ $resultTotal }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="20%">Jawaban Salah</th>
+                                    <td>:</td>
+                                    <td>{{ $resultTotalWrong }}</td>
+                                </tr>
+                                <tr>
+                                    <th width="20%">Hasil Tes</th>
+                                    <td>:</td>
+                                    <td>
+                                        @if ($resultTotal > 5 && $resultTotal < 16)
+                                            Anda menderita buta warna parsial
+                                        @elseif ($resultTotal < 5)
+                                            Anda menderita buta total
+                                        @else
+                                            Penglihatan mata Anda normal
+                                        @endif
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="text-center mt-4">
                             @if ($resultTotal > 5 && $resultTotal < 16)
                                 <p>Karena Anda menderita buta warna parsial, silahkan lanjutkan tes untuk mengetahui jenis buta warna parsial yang di derita.</p>
-                                <a href="{{ route('redgreen.test', $test_id) }}" class="btn btn-primary">Lanjutkan Tes Cambridge</a>
+                                <a href="{{ route('redgreen.test', $test_id) }}" class="btn btn-primary mt-3">Lanjutkan Tes Cambridge</a>
                             @else
-                                <a href="{{ route('beranda') }}" class="btn btn-primary">Kembali ke Beranda</a>
+                                <a href="{{ route('beranda') }}" class="btn btn-primary mt-3">Kembali ke Beranda</a>
                             @endif
                         </div>
                     </div>

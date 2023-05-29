@@ -25,11 +25,11 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body m-3">
-                        <form action="{{ route('store.ishihara') }}" method="POST">
+                        <form action="{{ route('store.cambridge.blue') }}" method="POST">
                             @csrf
                             <fieldset>
                                 <div class="text-center">
-                                    <h4>Tes Cambridge</h4>
+                                    <h4>Tes Cambridge Biru-Kuning</h4>
                                 </div>
                                 <section id="image-carousel" class="splide" aria-label="Cambridge Test">
                                     <div class="splide__track">
@@ -37,58 +37,37 @@
                                             @php
                                                 $no = 1;
                                             @endphp
-                                            @foreach ($ishiharaPlate as $index => $data)
+                                            @foreach ($cambridgePlate as $index => $data)
                                             <li class="splide__slide">
                                                 <div class="text-center">
-                                                    <img src="{{ asset('assets/img/ishihara/' . $data->plate) }}" class="img-test">
-                                                    <input type="hidden" class="form-control" name="ishihara_plates_id[{{ $index }}]" value="{{ $data->id }}">
+                                                    <img src="{{ asset('assets/img/cambridge-blue/' . $data->plate) }}" class="img-test">
                                                 </div>
                                                 <div class="mt-4">
                                                     <label for="Question">{{ $no++ . '. ' . $data->desc }}</label>
                                                 </div>
                                                 <div class="row mt-4">
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="user_answer[{{ $index }}]" id="pil_a{{ $index }}" value="{{ $data->pil_a }}" {{ old('user_answer.'.$index) == $data->pil_a ? 'checked' : '' }} required>
-                                                            <label class="form-check-label" for="pil_a{{ $index }}">
-                                                                {{ $data->pil_a }}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="user_answer[{{ $index }}]" id="pil_b{{ $index }}" value="{{ $data->pil_b }}" {{ old('user_answer.'.$index) == $data->pil_b ? 'checked' : '' }} required>
-                                                            <label class="form-check-label" for="pil_b{{ $index }}">
-                                                                {{ $data->pil_b }}
-                                                            </label>
-                                                        </div>
-                                                    </div>
+                                                    <select class="form-select" aria-label="Default select example" name="user_answer[{{ $index }}]">
+                                                        <option selected>Pilih jawaban</option>
+                                                        <option value="Tidak Ada">Tidak Ada</option>
+                                                        <option value="Atas">Atas</option>
+                                                        <option value="Bawah">Bawah</option>
+                                                        <option value="Kiri">Kiri</option>
+                                                        <option value="Kanan">Kanan</option>
+                                                        <option value="Serong Kiri Atas">Serong Kiri Atas</option>
+                                                        <option value="Serong Kanan Atas">Serong Kanan Atas</option>
+                                                        <option value="Serong Kiri Bawah">Serong Kiri Bawah</option>
+                                                        <option value="Serong Kanan Bawah">Serong Kanan Bawah</option>
+                                                    </select>
                                                 </div>
-                                                <div class="row mt-2">
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="user_answer[{{ $index }}]" id="pil_c{{ $index }}" value="{{ $data->pil_c }}" {{ old('user_answer.'.$index) == $data->pil_c ? 'checked' : '' }} required>
-                                                            <label class="form-check-label" for="pil_c{{ $index }}">
-                                                                {{ $data->pil_c }}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="user_answer[{{ $index }}]" id="pil_d{{ $index }}" value="{{ $data->pil_d }}" {{ old('user_answer.'.$index) == $data->pil_d ? 'checked' : '' }} required>
-                                                            <label class="form-check-label" for="pil_d{{ $index }}">
-                                                                {{ $data->pil_d }}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <input type="hidden" class="form-control" name="cambridgeby_plates_id[{{ $index }}]" value="{{ $data->id }}">
+                                                <input type="hidden" class="form-control" name="keywords[{{ $index }}]" value="{{ $data->keyword }}">
                                             </li>
                                             @endforeach
                                         </ul>
                                     </div>
                                 </section>
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                <input type="hidden" name="start_time" value="{{ $time }}">
+                                <input type="hidden" class="form-control" name="id" value="{{ $testId }}">
+                                <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
                                 <div class="text-center mt-4">
                                     <button type="submit" class="btn btn-color">Submit</button>
                                 </div>

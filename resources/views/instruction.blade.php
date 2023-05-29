@@ -2,7 +2,7 @@
 @extends('template.master')
 
 <!-- Set Title -->
-@section('title', 'SITAWA - Tentang Buta Warna')
+@section('title', 'Tentang Buta Warna - SITAWA')
 
 <!-- Main Content -->
 @section('content')

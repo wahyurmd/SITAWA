@@ -2,7 +2,7 @@
 @extends('template.master')
 
 <!-- Set Title -->
-@section('title', 'SINADU - Hasil Tes Buta Warna')
+@section('title', 'Hasil Tes Buta Warna - SITAWA')
 
 <!-- Main Content -->
 @section('content')
@@ -29,68 +29,16 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="none" d="M0 0h24v24H0z"/><path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z"/></svg>
                             Kembali
                         </a>
-                        <h4 class="text-center mt-3">Hasil Tes Buta Warna</h4>
-                        <table class="table mt-5">
-                            <tbody>
-                                <tr>
-                                    <td>Nama</td>
-                                    <td>:</td>
-                                    <td>Wahyu Ramadhani</td>
-                                </tr>
-                                <tr>
-                                    <td>Usia</td>
-                                    <td>:</td>
-                                    <td>22 Tahun</td>
-                                </tr>
-                                <tr>
-                                    <td>Jenis Kelamin</td>
-                                    <td>:</td>
-                                    <td>Laki-laki</td>
-                                </tr>
-                                <tr>
-                                    <td>Alamat</td>
-                                    <td>:</td>
-                                    <td>Kp. Kebayunan Rt.04/Rw.19, No. 56</td>
-                                </tr>
-                                <tr>
-                                    <td>Desa / Kelurahan</td>
-                                    <td>:</td>
-                                    <td>Tapos</td>
-                                </tr>
-                                <tr>
-                                    <td>Kecamatan</td>
-                                    <td>:</td>
-                                    <td>Tapos</td>
-                                </tr>
-                                <tr>
-                                    <td>Kota</td>
-                                    <td>:</td>
-                                    <td>Depok</td>
-                                </tr>
-                                <tr>
-                                    <td>Provinsi</td>
-                                    <td>:</td>
-                                    <td>Jawa Barat</td>
-                                </tr>
-                                <tr>
-                                    <td>Tanggal Tes</td>
-                                    <td>:</td>
-                                    <td>Jumat, 17 Maret 2023</td>
-                                </tr>
-                                <tr>
-                                    <td>Waktu Tes</td>
-                                    <td>:</td>
-                                    <td>07:00:05</td>
-                                </tr>
-                                <tr>
-                                    <td>Hasil Tes</td>
-                                    <td>:</td>
-                                    <td>Tidak buta warna</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="text-end">
-                            <button type="button" class="btn btn-color btn-sm bg-primary">Unduh Hasil Tes</button>
+                        <div class="row pt-3 text-center">
+                            @foreach ($result as $data)
+                            <div class="col-md-6">
+                                <a href="{{ route('result.data', $data->id) }}" class="btn btn-outline-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+                                        <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
+                                    </svg> | {{ $data->created_at }}
+                                </a>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/cambridge-result/{id}', 'cambridgeResult')->name('result.cambridge');
 
         Route::get('/result', 'resultTest')->name('result');
+        Route::get('/result/{id}', 'resultData')->name('result.data');
         Route::get('/about', 'about')->name('about');
         Route::get('/instruction', 'howtodo')->name('howtodo');
     });

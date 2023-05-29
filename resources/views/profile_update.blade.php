@@ -2,7 +2,7 @@
 @extends('template.master')
 
 <!-- Set Title -->
-@section('title', 'SINADU - Ubah Data Profil')
+@section('title', 'Ubah Data Profil - SITAWA')
 
 <!-- Main Content -->
 @section('content')

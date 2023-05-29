@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\BlueImport;
 use Illuminate\Http\Request;
 use App\Imports\IshiharaImport;
+use App\Imports\RedGreenImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 
@@ -49,11 +51,11 @@ class ImportController extends Controller
         $file->storeAs('import', $fileName);
 
         try {
-            Excel::import(new IshiharaImport, storage_path('app/import/' . $fileName));
+            Excel::import(new RedGreenImport, storage_path('app/import/' . $fileName));
         } catch (\Exception $e) {
             return back()->with('error', ['Failed to import plate data: ' . $e->getMessage()])->withInput();
         }
-        // Excel::import(new IshiharaImport, storage_path('app/import/' . $fileName));
+        // Excel::import(new RedGreenImport, storage_path('app/import/' . $fileName));
 
         return redirect()->back()->with('success', 'Data imported successfully.');
     }
@@ -71,11 +73,11 @@ class ImportController extends Controller
         $file->storeAs('import', $fileName);
 
         try {
-            Excel::import(new IshiharaImport, storage_path('app/import/' . $fileName));
+            Excel::import(new BlueImport, storage_path('app/import/' . $fileName));
         } catch (\Exception $e) {
             return back()->with('error', ['Failed to import plate data: ' . $e->getMessage()])->withInput();
         }
-        // Excel::import(new IshiharaImport, storage_path('app/import/' . $fileName));
+        // Excel::import(new BlueImport, storage_path('app/import/' . $fileName));
 
         return redirect()->back()->with('success', 'Data imported successfully.');
     }

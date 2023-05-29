@@ -8,21 +8,15 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('ishihara_tests', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('user_id');
-            $table->string('gender');
-            $table->date('born_date');
-            $table->string('address');
-            $table->string('ward');
-            $table->string('subdistrict');
-            $table->string('city');
-            $table->string('province');
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
+            $table->integer('status');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -31,11 +25,9 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('ishihara_tests');
     }
 };

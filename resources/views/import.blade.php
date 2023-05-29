@@ -44,6 +44,50 @@
                                 </div>
                             </div>
                         </form>
+                        <h5 class="card-title">Import Cambridge Red-Green</h5>
+                        <form action="{{ route('import.rg') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control @error('import_redgreen') @enderror" id="inputGroupFile02" name="import_redgreen">
+                                        <label class="input-group-text" for="inputGroupFile02">Browse</label>
+                                        @error('import_redgreen')
+                                            <div class="alert alert-warning mt-2">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-color btn-block">Import</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <h5 class="card-title">Import Cambridge Blue</h5>
+                        <form action="{{ route('import.blue') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control @error('import_blue') @enderror" id="inputGroupFile02" name="import_blue">
+                                        <label class="input-group-text" for="inputGroupFile02">Browse</label>
+                                        @error('import_blue')
+                                            <div class="alert alert-warning mt-2">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-color btn-block">Import</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

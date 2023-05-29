@@ -6,19 +6,15 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Profiles extends Model
+class IshiharaTest extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'gender',
-        'born_date',
-        'address',
-        'ward',
-        'subdistrict',
-        'city',
-        'province',
+        'start_time',
+        'end_time',
+        'status',
     ];
 
     public function getIncrementing()

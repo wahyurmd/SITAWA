@@ -35,4 +35,48 @@ class ImportController extends Controller
 
         return redirect()->back()->with('success', 'Data imported successfully.');
     }
+
+    public function importCambridgeRG(Request $req)
+    {
+        $validator = Validator::make($req->all(), [
+            'import_redgreen' => 'required|mimes:xls,xlsx',
+        ]);
+
+        $file = $req->file('import_redgreen');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+
+        // Pindahkan file ke direktori storage/app/import
+        $file->storeAs('import', $fileName);
+
+        try {
+            Excel::import(new IshiharaImport, storage_path('app/import/' . $fileName));
+        } catch (\Exception $e) {
+            return back()->with('error', ['Failed to import plate data: ' . $e->getMessage()])->withInput();
+        }
+        // Excel::import(new IshiharaImport, storage_path('app/import/' . $fileName));
+
+        return redirect()->back()->with('success', 'Data imported successfully.');
+    }
+
+    public function importCambridgeBlue(Request $req)
+    {
+        $validator = Validator::make($req->all(), [
+            'import_blue' => 'required|mimes:xls,xlsx',
+        ]);
+
+        $file = $req->file('import_blue');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+
+        // Pindahkan file ke direktori storage/app/import
+        $file->storeAs('import', $fileName);
+
+        try {
+            Excel::import(new IshiharaImport, storage_path('app/import/' . $fileName));
+        } catch (\Exception $e) {
+            return back()->with('error', ['Failed to import plate data: ' . $e->getMessage()])->withInput();
+        }
+        // Excel::import(new IshiharaImport, storage_path('app/import/' . $fileName));
+
+        return redirect()->back()->with('success', 'Data imported successfully.');
+    }
 }

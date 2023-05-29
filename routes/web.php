@@ -20,7 +20,19 @@ use App\Http\Controllers\UserController;
 Route::middleware(['auth'])->group(function () {
     Route::controller(HomeController::class)->group(function() {
         Route::get('/', 'index')->name('beranda');
+
         Route::get('/ishihara-test', 'ishiharaTest')->name('ishihara.test');
+        Route::post('/ishihara-test', 'storeIshiharaTest')->name('store.ishihara');
+        Route::get('/ishihara-result/{id}', 'ishiharaResult')->name('result.ishihara');
+
+        Route::get('/cambridge-test/red-green{id}', 'cambridgeTestRG')->name('redgreen.test');
+        Route::post('/cambridge-test/red-green', 'storeCambridgeTestRG')->name('store.cambridge.rg');
+
+        Route::get('/cambridge-test/blue/{id}', 'cambridgeTestBlue')->name('blue.test');
+        Route::post('/cambridge-test/blue', 'storeCambridgeTestBlue')->name('store.cambridge.blue');
+
+        Route::get('/cambridge-result/{id}', 'cambridgeResult')->name('result.cambridge');
+
         Route::get('/result', 'resultTest')->name('result');
         Route::get('/about', 'about')->name('about');
         Route::get('/instruction', 'howtodo')->name('howtodo');
@@ -47,4 +59,6 @@ Route::middleware(['guest'])->group(function () {
     // import excel
     Route::get('/import', [ImportController::class, 'import'])->name('import');
     Route::post('/import-ishihara', [ImportController::class, 'importIshihara'])->name('import.ishihara');
+    Route::post('/import-cambridge-rg', [ImportController::class, 'importCambridgeRG'])->name('import.rg');
+    Route::post('/import-cambridge-blue', [ImportController::class, 'importCambridgeBlue'])->name('import.blue');
 });

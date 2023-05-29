@@ -24,7 +24,7 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-body m-3">
+                    <div class="card-body">
                         <form action="{{ route('store.ishihara') }}" method="POST">
                             @csrf
                             <fieldset>

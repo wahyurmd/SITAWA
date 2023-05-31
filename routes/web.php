@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/ishihara-test', 'storeIshiharaTest')->name('store.ishihara');
         Route::get('/ishihara-result/{id}', 'ishiharaResult')->name('result.ishihara');
 
-        Route::get('/cambridge-test/red-green{id}', 'cambridgeTestRG')->name('redgreen.test');
+        Route::get('/cambridge-test/red-green/{id}', 'cambridgeTestRG')->name('redgreen.test');
         Route::post('/cambridge-test/red-green', 'storeCambridgeTestRG')->name('store.cambridge.rg');
 
         Route::get('/cambridge-test/blue/{id}', 'cambridgeTestBlue')->name('blue.test');
@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/result', 'resultTest')->name('result');
         Route::get('/result/{id}', 'resultData')->name('result.data');
+        Route::get('/unduh-hasil-tes/{id}', 'generatePDF')->name('unduh.pdf');
+
         Route::get('/about', 'about')->name('about');
         Route::get('/instruction', 'howtodo')->name('howtodo');
     });

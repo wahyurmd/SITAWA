@@ -29,13 +29,13 @@
                     <h4 class="text-center mt-2">Ubah Data Profil</h4>
                 </div>
                 @foreach ($profile as $row)
-                <form action="{{ route('profile.action', $row->id) }}" method="post">
+                <form action="{{ route('profile.action', Auth::user()->id) }}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
                         <div class="form-group">
                             <label class="fw-bold">Nama Lengkap:</label>
-                            <input type="text" name="name" class="form-control @error('name') @enderror" value="{{ $row->name }}">
+                            <input type="text" name="name" class="form-control text-capitalize @error('name') @enderror" value="{{ $row->name }}">
                             @error('name')
                                 <div class="alert alert-warning mt-2">
                                     {{ $message }}
@@ -91,7 +91,7 @@
                         </div>
                         <div class="form-group mt-3">
                             <label class="fw-bold">Desa / Kelurahan</label>
-                            <input type="text" class="form-control @error('ward') @enderror" name="ward" value="{{ $row->ward }}">
+                            <input type="text" class="form-control text-capitalize @error('ward') @enderror" name="ward" value="{{ $row->ward }}">
                             @error('ward')
                                 <div class="alert alert-warning mt-2">
                                     {{ $message }}
@@ -100,7 +100,7 @@
                         </div>
                         <div class="form-group mt-3">
                             <label class="fw-bold">Kecamatan</label>
-                            <input type="text" class="form-control @error('subdistrict') @enderror" name="subdistrict" value="{{ $row->subdistrict }}">
+                            <input type="text" class="form-control text-capitalize @error('subdistrict') @enderror" name="subdistrict" value="{{ $row->subdistrict }}">
                             @error('subdistrict')
                                 <div class="alert alert-warning mt-2">
                                     {{ $message }}
@@ -109,7 +109,7 @@
                         </div>
                         <div class="form-group mt-3">
                             <label class="fw-bold">Kota</label>
-                            <input type="text" class="form-control @error('city') @enderror" name="city" value="{{ $row->city }}">
+                            <input type="text" class="form-control text-capitalize @error('city') @enderror" name="city" value="{{ $row->city }}">
                             @error('city')
                                 <div class="alert alert-warning mt-2">
                                     {{ $message }}
@@ -118,7 +118,7 @@
                         </div>
                         <div class="form-group mt-3">
                             <label class="fw-bold">Provinsi</label>
-                            <input type="text" class="form-control @error('province') @enderror" name="province" value="{{ $row->province }}">
+                            <input type="text" class="form-control text-capitalize @error('province') @enderror" name="province" value="{{ $row->province }}">
                             @error('province')
                                 <div class="alert alert-warning mt-2">
                                     {{ $message }}
@@ -126,7 +126,7 @@
                             @enderror
                         </div>
                         <div class="text-center mt-4">
-                            <button href="#" type="submit" class="btn btn-color">Simpan Data</button>
+                            <button type="submit" class="btn btn-color">Simpan Data</button>
                         </div>
                     </div>
                 </form>

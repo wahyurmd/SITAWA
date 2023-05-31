@@ -47,24 +47,28 @@ class UserController extends Controller
             'province' => 'required',
         ]);
 
-        $user = User::findOrFail($id);
-        $profile = Profiles::findOrFail($id);
+        DB::transaction(function () use ($request, $id) {
+            DB::table('users')
+            ->where('id', $id)
+            ->update([
+                'name'          => $request->name,
+                'email'         => $request->email,
+                'updated_at'    => Carbon::now(),
+            ]);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->updated_at = Carbon::now();
-
-        $profile->gender = $request->gender;
-        $profile->born_date = $request->born_date;
-        $profile->address = $request->address;
-        $profile->ward = $request->ward;
-        $profile->subdistrict = $request->subdistrict;
-        $profile->city = $request->city;
-        $profile->province = $request->province;
-        $profile->updated_at = Carbon::now();
-
-        $user->save();
-        $profile->save();
+            DB::table('profiles')
+            ->where('id', $id)
+            ->update([
+                'gender'        => $request->gender,
+                'born_date'     => $request->born_date,
+                'address'       => $request->address,
+                'ward'          => $request->ward,
+                'subdistrict'   => $request->subdistrict,
+                'city'          => $request->city,
+                'province'      => $request->province,
+                'updated_at'    => Carbon::now(),
+            ]);
+        });
 
         return redirect('/profile')->with('success', 'Data profil berhasil di ubah.');
     }

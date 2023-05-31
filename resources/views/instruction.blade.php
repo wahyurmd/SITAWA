@@ -2,7 +2,7 @@
 @extends('template.master')
 
 <!-- Set Title -->
-@section('title', 'Tentang Buta Warna - SITAWA')
+@section('title', 'Cara Mengerjakan - SITAWA')
 
 <!-- Main Content -->
 @section('content')
@@ -25,58 +25,62 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body m-3">
-                        <fieldset>
+                        <fieldset class="pt-3 pb-3">
                             <div class="text-center">
-                                <h4>Cara Mengerjakan</h4>
+                                <h4 class="fw-bold">Cara Mengerjakan</h4>
                             </div>
-                            {{-- <div class="pt-3">
+                            <div class="pt-3">
                                 <p class="text-wrap fs-7">
-                                    Buta warna (<i>color blind</i>) merupakan salah satu gangguan penglihatan mata terhadap warna yang disebabkan oleh masalah pigmen pada retina, lapisan bagian dalam mata yang memungkinkan seseorang dapat melihat. Biasanya penderita tidak mampu melihat beberapa warna dengan jelas dan akurat (Rani & Sriwahyuni, 2021). Selain faktor keturunan penyebab buta warna juga dapat terjadi karena paparan zat kimia atau cedera fisik terhadap mata, saraf penglihatan ataupun bagian otak yang memproses informasi warna.
-                                </p>
-                                <p class="text-wrap fs-7">
-                                    Buta warna terdapat dua jenis yang paling umum, yaitu buta warna absolut (buta warna total) dan buta warna parsial (buta warna sebagian). Buta warna total merupakan keadaan seseorang tidak dapat melihat warna sama sekali atau hanya terlihat hitam dan putih. Sedangkan buta warna parsial merupakan keadaan seseorang tidak dapat melihat beberapa warna yang menyebabkan kesulitan dalam membedakan beberapa warna tertentu.
-                                </p>
-                                <p class="text-wrap fs-7">
-                                    Buta warna parsial memiliki dua golongan, yaitu kesulitan dalam membedakan warna pada gradasi merah-hijau, dan warna biru-kuning (Halodoc, 2019). Buta warna parsial merah-hijau dan biru-kuning memiliki beberapa macam jenisnya, antara lain:
+                                    Pada aplikasi ini terdapat 2 jenis tes, yaitu tes Ishihara (untuk mengetahui apakah mata normal, buta warna parsial, dan buta warna total) dan tes Cambridge (untuk mengetahui jenis buta warna parsial yang di derita). Untuk melakukan tes buta warna dapat mengikuti langkah-langkah berikut ini:
                                 </p>
                                 <ol class="list-group list-group-numbered">
                                     <li class="list-group-item d-flex justify-content-between align-items-start border-0 fs-7">
                                         <div class="ms-2 me-auto">
-                                            <div>Buta Warna Merah-Hijau</div>
-                                            <ol class="list-group list-group-numbered">
-                                                <li class="list-group-item border-0">
-                                                    <i>Deuteranopia</i>, keadaan dimana seseorang ketika melihat warna merah menjadi warna kuning kecokelatan dan warna hijau menjadi warna krem.
-                                                </li>
-                                                <li class="list-group-item border-0">
-                                                    <i>Protanopia</i>, keadaan dimana seseorang ketika melihat warna merah tampak hitam, warna jingga dan hijau terlihat warna kuning, dan kesulitan dalam membedakan warna ungu dan biru.
-                                                </li>
-                                                <li class="list-group-item border-0">
-                                                    <i>Protanomali</i>, keadaan dimana seseorang ketika melihat warna jingga, merah, dan kuning tampak lebih gelap menyerupai warna hijau.
-                                                </li>
-                                                <li class="list-group-item border-0">
-                                                    <i>Deutranomalia</i>, keadaan dimana seseorang ketika melihat warna hijau dan kuning menjadi kemerahan, dan sulit membedakan warna ungu dan biru.
-                                                </li>
-                                            </ol>
+                                            <div>Pilih menu "Mulai Tes"</div>
                                         </div>
+                                    </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-start border-0 fs-7">
                                         <div class="ms-2 me-auto">
-                                            <div>Buta Warna Biru-Kuning</div>
-                                            <ol class="list-group list-group-numbered">
-                                                <li class="list-group-item border-0">
-                                                    <i>Tritanomali</i>, keadaan dimana seseorang ketika melihat warna biru tampak seperti hijau dan sulit membedakan warna kuning dan merah.
-                                                </li>
-                                                <li class="list-group-item border-0">
-                                                    <i>Tritanopia</i>, keadaan dimana seseorang ketika melihat warna biru tampak seperti hijau dan warna kuning tampak menjadi warna ungu atau abu-abu.
-                                                </li>
-                                            </ol>
+                                            <div>Tes Ishihara</div>
+                                            <p class="text-wrap">
+                                                Setelah memilih "Mulai Tes" pengguna akan di alihkan ke halaman tes Ishihara. Tes ini memiliki 18 soal (plate), pengguna diharuskan untuk menjawab plate-plate tersebut. Setelah selesai mengisi semua pertanyaan pada tes Ishihara, silahkan tekan tombol submit untuk melihat hasil dari tes yang sudah dikerjakan.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 fs-7">
+                                        <div class="ms-2 me-auto">
+                                            <div>Halaman hasil tes Ishihara</div>
+                                            <p class="text-wrap">
+                                                Pada halaman ini ditampilkan hasil dari tes yang sudah dikerjakan oleh pengguna pada halaman sebelumnya. Jika hasil tes yang didapat adalah mata normal dan buta warna total, maka tidak perlu untuk melanjutkan tes Cambridge. Tetapi jika yang didapat adalah buta warna parsial, maka pengguna harus mengerjakan tes Cambridge untuk mengetahui jenis buta warna parsial apa yang di derita.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 fs-7">
+                                        <div class="ms-2 me-auto">
+                                            <div>Tes Cambridge</div>
+                                            <p class="text-wrap">
+                                                Untuk mengerjakan tes Cambridge terdapat 2 tes. Tes yang pertama adalah tes Cambridge Merah-Hijau, dan yang kedua adalah tes Cambridge Biru-Kuning. Tes Cambridge Merah-Hijau memiliki 14 soal (plate) yang harus dijawab, dan jika sudah selesai pengguna dapat menekan tombol submit untuk mengerjakan tes Cambridge Biru-Kuning yang memiliki 10 soal (plate). Setelah selesai mengisi semua pertanyaan pada tes Cambridge, silahkan tekan tombol submit untuk melihat hasil dari tes yang sudah dikerjakan.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 fs-7">
+                                        <div class="ms-2 me-auto">
+                                            <div>Halaman hasil tes Cambridge</div>
+                                            <p class="text-wrap">
+                                                Pada halaman ini ditampilkan hasil dari tes yang sudah dikerjakan oleh pengguna pada halaman sebelumnya. Hasil pada tes ini terdapat 3 kategori, yaitu buta warna Merah-Hijau, buta warna Biru-Kuning ataupun buta warna Merah-Hijau dan Biru-Kuning.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 fs-7">
+                                        <div class="ms-2 me-auto">
+                                            <div>Lihat hasil tes pada menu "Hasil Tes" di beranda</div>
+                                            <p class="text-wrap">
+                                                Pada halaman ini ditampilkan hasil dari tes yang sudah dikerjakan oleh pengguna. Selain itu pengguna dapat mengunduh hasil tes dengan menekan tombol "Unduh Hasil Tes" yang di export sebagai PDF sebagai surat keterangan hasil tes buta warna.
+                                            </p>
                                         </div>
                                     </li>
                                 </ol>
-                                <p class="text-wrap fs-7">
-                                    Untuk mengetahui apakah seseorang menderita buta warna atau tidak, perlu dilakukan sebuah tes diagnosis buta warna. Tes ini merupakan sebuah tes yang digunakan untuk mendiagnosis apakah seseorang mengalami buta warna atau tidak. Berbagai metode pemeriksaan untuk mengetahui seseorang menderita buta warna antara lain menggunakan metode Ishihara, Anomaloscope, Farnsworth-Munsell, Cambridge, dan metode lainnya (Iskandar & Bastian, 2018).
-                                </p>
-                                <p class="text-wrap fs-7"></p>
-                            </div> --}}
+                            </div>
                         </fieldset>
                     </div>
                 </div>

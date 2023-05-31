@@ -16,4 +16,4 @@
             pagination: false,
         }).mount();
     });
-  </script>
+</script>

@@ -35,42 +35,42 @@
                                 <tr>
                                     <td>Nama</td>
                                     <td>:</td>
-                                    <td>{{ $data->name }}</td>
+                                    <td class="text-capitalize">{{ $data->name }}</td>
                                 </tr>
                                 <tr>
                                     <td>Usia</td>
                                     <td>:</td>
-                                    <td>{{ $age }} Tahun</td>
+                                    <td class="text-capitalize">{{ $age }} Tahun</td>
                                 </tr>
                                 <tr>
                                     <td>Jenis Kelamin</td>
                                     <td>:</td>
-                                    <td>{{ $data->gender }}</td>
+                                    <td class="text-capitalize">{{ $data->gender }}</td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
                                     <td>:</td>
-                                    <td>{{ $data->address }}</td>
+                                    <td class="text-capitalize">{{ $data->address }}</td>
                                 </tr>
                                 <tr>
                                     <td>Desa / Kelurahan</td>
                                     <td>:</td>
-                                    <td>{{ $data->ward }}</td>
+                                    <td class="text-capitalize">{{ $data->ward }}</td>
                                 </tr>
                                 <tr>
                                     <td>Kecamatan</td>
                                     <td>:</td>
-                                    <td>{{ $data->subdistrict }}</td>
+                                    <td class="text-capitalize">{{ $data->subdistrict }}</td>
                                 </tr>
                                 <tr>
                                     <td>Kota</td>
                                     <td>:</td>
-                                    <td>{{ $data->city }}</td>
+                                    <td class="text-capitalize">{{ $data->city }}</td>
                                 </tr>
                                 <tr>
                                     <td>Provinsi</td>
                                     <td>:</td>
-                                    <td>{{ $data->province }}</td>
+                                    <td class="text-capitalize">{{ $data->province }}</td>
                                 </tr>
                                 @foreach ($result as $row)
                                     <tr>
@@ -94,7 +94,7 @@
                             @endforeach
                         </table>
                         <div class="text-end">
-                            <button type="button" class="btn btn-color btn-sm bg-primary">Unduh Hasil Tes</button>
+                            <a href="{{ route('unduh.pdf', $testId) }}" class="btn btn-color btn-sm bg-primary">Unduh Hasil Tes</a>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 @extends('template.master')
 
 <!-- Set Title -->
-@section('title', 'SITAWA - Pengujian Cambridge')
+@section('title', 'Pengujian Cambridge - SITAWA')
 
 <!-- Main Content -->
 @section('content')
@@ -31,40 +31,34 @@
                                 <div class="text-center">
                                     <h4>Tes Cambridge Merah-Hijau</h4>
                                 </div>
-                                <section id="image-carousel" class="splide" aria-label="Cambridge Test">
-                                    <div class="splide__track">
-                                        <ul class="splide__list">
-                                            @php
-                                                $no = 1;
-                                            @endphp
-                                            @foreach ($cambridgePlate as $index => $data)
-                                            <li class="splide__slide">
-                                                <div class="text-center">
-                                                    <img src="{{ asset('assets/img/cambridge-rg/' . $data->plate) }}" class="img-test">
-                                                </div>
-                                                <div class="mt-4">
-                                                    <label for="Question">{{ $no++ . '. ' . $data->desc }}</label>
-                                                </div>
-                                                <div class="row mt-4">
-                                                    <select class="form-select" aria-label="Default select example" name="user_answer[{{ $index }}]">
-                                                        <option selected>Pilih jawaban</option>
-                                                        <option value="Atas">Atas</option>
-                                                        <option value="Bawah">Bawah</option>
-                                                        <option value="Kiri">Kiri</option>
-                                                        <option value="Kanan">Kanan</option>
-                                                        <option value="Serong Kiri Atas">Serong Kiri Atas</option>
-                                                        <option value="Serong Kanan Atas">Serong Kanan Atas</option>
-                                                        <option value="Serong Kiri Bawah">Serong Kiri Bawah</option>
-                                                        <option value="Serong Kanan Bawah">Serong Kanan Bawah</option>
-                                                    </select>
-                                                </div>
-                                                <input type="text" class="form-control" name="cambridgerg_plates_id[{{ $index }}]" value="{{ $data->id }}">
-                                                <input type="hidden" class="form-control" name="keywords[{{ $index }}]" value="{{ $data->keyword }}">
-                                            </li>
-                                            @endforeach
-                                        </ul>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($cambridgePlate as $index => $data)
+                                    <div class="border-bottom p-3">
+                                        <div class="mt-4">
+                                            <label for="Question">{{ $no++ . '. ' . $data->desc }}</label>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="{{ asset('assets/img/cambridge-rg/' . $data->plate) }}" class="img-test">
+                                        </div>
+                                        <div class="row mt-4">
+                                            <select class="form-select" aria-label="Default select example" name="user_answer[{{ $index }}]">
+                                                <option selected>Pilih jawaban</option>
+                                                <option value="Atas">Atas</option>
+                                                <option value="Bawah">Bawah</option>
+                                                <option value="Kiri">Kiri</option>
+                                                <option value="Kanan">Kanan</option>
+                                                <option value="Serong Kiri Atas">Serong Kiri Atas</option>
+                                                <option value="Serong Kanan Atas">Serong Kanan Atas</option>
+                                                <option value="Serong Kiri Bawah">Serong Kiri Bawah</option>
+                                                <option value="Serong Kanan Bawah">Serong Kanan Bawah</option>
+                                            </select>
+                                        </div>
+                                        <input type="hidden" class="form-control" name="cambridgerg_plates_id[{{ $index }}]" value="{{ $data->id }}">
+                                        <input type="hidden" class="form-control" name="keywords[{{ $index }}]" value="{{ $data->keyword }}">
                                     </div>
-                                </section>
+                                @endforeach
                                 <input type="hidden" class="form-control" name="id" value="{{ $testId }}">
                                 <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}">
                                 <input type="hidden" class="form-control" name="start_time" value="{{ $time }}">

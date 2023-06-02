@@ -94,7 +94,7 @@
                             @endforeach
                         </table>
                         <div class="text-end">
-                            <a href="{{ route('unduh.pdf', $testId) }}" class="btn btn-color btn-sm bg-primary">Unduh Hasil Tes</a>
+                            <a href="{{ route('unduh.pdf', $testId) }}" class="btn btn-color btn-sm bg-primary" target="_blank">Unduh Hasil Tes</a>
                         </div>
                     </div>
                 </div>

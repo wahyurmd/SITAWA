@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/result', 'resultTest')->name('result');
         Route::get('/result/{id}', 'resultData')->name('result.data');
         Route::get('/unduh-hasil-tes/{id}', 'generatePDF')->name('unduh.pdf');
+        // Route::get('/preview/{id}', 'Preview')->name('unduh.pdf');
 
         Route::get('/about', 'about')->name('about');
         Route::get('/instruction', 'howtodo')->name('howtodo');

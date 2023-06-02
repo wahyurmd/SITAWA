@@ -5,24 +5,52 @@
         /* Tambahkan gaya CSS sesuai kebutuhan Anda */
         body {
             font-family: Arial, sans-serif;
+            font-size: 14px;
         }
         .header {
+            position: relative;
             text-align: center;
-            border-bottom: 1px;
             margin-bottom: 20px;
+            padding: 20px 50px 0 50px;
         }
         .content {
+            padding: 10px 50px 0 50px;
             margin-bottom: 40px;
+        }
+        h3 {
+            border-bottom: 2px solid;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h4 {
+            text-transform: uppercase;
+        }
+        .table-first {
+            padding-left: 30px;
+        }
+        .ttd {
+            padding-top: 30px
+        }
+        div.absolute {
+            position: absolute;
+            right: 50px;
+            width: 220px;
+            height: 100px;
+        }
+        .border-bottom {
+            border-bottom: 1px solid;
+            margin-right: 50px;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h3>Surat Keterangan Hasil Buta Warna</h3>
+        <h3>Surat Keterangan Hasil Tes Buta Warna</h3>
     </div>
     <div class="content">
-        <p>Menerangkan bahwa :</p>
-        {{-- @foreach ($profil as $data)
+        <p>Yang bertanda tangan dibawah ini, dokter ............................., menerangkan bahwa :</p>
+        @foreach ($profil as $data)
+        <table class="table-first">
             <tr>
                 <td>Nama</td>
                 <td>:</td>
@@ -63,26 +91,43 @@
                 <td>:</td>
                 <td>{{ $data->province }}</td>
             </tr>
+        </table>
             @foreach ($result as $row)
-                <tr>
-                    <td>Pelaksanaan Tes</td>
-                    <td>:</td>
-                    <td>{{ \Carbon\Carbon::parse($row->created_at)->format('d-m-Y H:i:s') }}</td>
-                </tr>
+            @php
+                setlocale(LC_ALL, 'IND');
+                $date = \Carbon\Carbon::parse($row->created_at)->locale('id');
+                $date->settings(['formatFunction' => 'translatedFormat']);
+            @endphp
+                <p style="padding-top: 10px;">Pada tanggal {{ $date->format('d F Y') }} telah melakukan pemeriksan tes buta warna menggunakan aplikasi Sitawa dengan hasil:</p>
             @endforeach
-            <tr>
-                <td>Hasil Tes Ishihara</td>
-                <td>:</td>
-                <td>{{ $hasilIshihara }}</td>
-            </tr>
-            @if ($hasilIshihara == "Buta Warna Parsial")
+            <table style="font-weight: bold; padding-top: 10px;">
                 <tr>
-                    <td>Hasil Tes Cambridge</td>
+                    <td>Tes Ishihara</td>
                     <td>:</td>
-                    <td>{{ $hasilCambridge }}</td>
+                    <td>{{ $hasilIshihara }}</td>
                 </tr>
-            @endif
-        @endforeach --}}
+                @if ($hasilIshihara == "Buta Warna Parsial")
+                    <tr>
+                        <td>Tes Cambridge</td>
+                        <td>:</td>
+                        <td>{{ $hasilCambridge }}</td>
+                    </tr>
+                @endif
+            </table>
+        @endforeach
+        @php
+            $date = \Carbon\Carbon::now()->locale('id');
+            $date->settings(['formatFunction' => 'translatedFormat']);
+        @endphp
+        <div class="absolute">
+            <p class="ttd">Jakarta, {{ $date->format('d F Y') }}</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p class="border-bottom">dr. ...................................</p>
+            <p>NIP. .................................</p>
+        </div>
     </div>
 </body>
 </html>

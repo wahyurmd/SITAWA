@@ -13,10 +13,10 @@ use App\Models\CambridgeBYPlate;
 use App\Models\CambridgeRGPlate;
 use App\Models\CambridgeBYAnswer;
 use App\Models\CambridgeRGAnswer;
-use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class HomeController extends Controller
 {
@@ -482,17 +482,108 @@ class HomeController extends Controller
             $hasilCambridge = "";
         }
 
-        // $pdf = app('dompdf.wrapper');
-        // $pdf->loadView('unduh-pdf', compact(
-        //     'profil',
-        //     'hasilIshihara',
-        //     'hasilCambridge',
-        //     'age',
-        // ));
-        // return $pdf->stream('Surat Keterangan Hasil Tes Buta Warna.pdf');
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('unduh-pdf', compact(
+            'profil',
+            'hasilIshihara',
+            'hasilCambridge',
+            'result',
+            'age',
+        ));
+        $pdf->setPaper('A4', 'portrait');
+        $filePath = storage_path('app/public/Surat Keterangan Hasil Tes Buta Warna.pdf');
+        $pdf->save($filePath);
 
-        // return redirect()->back()->with('success', 'PDF berhasil di-generate');
-        // return view('unduh-pdf');
+        $response = new BinaryFileResponse($filePath, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="Surat Keterangan Hasil Tes Buta Warna.pdf"',
+        ]);
+        $response->deleteFileAfterSend(true);
+
+        return $response;
+    }
+
+    public function Preview()
+    {
+        $id = 'e377e87b-d34c-4015-81d1-d811d00e7706';
+        $profil = DB::table('users')
+        ->join('profiles', 'users.id', '=', 'profiles.user_id')
+        ->where('users.id', Auth::user()->id)
+        ->get();
+
+        $result = DB::table('ishihara_tests')
+        ->where('user_id', Auth::user()->id)
+        ->where('id', $id)
+        ->get();
+
+        $resultTotal = DB::table('ishihara_answers')
+        ->join('ishihara_plates', 'ishihara_answers.ishihara_plates_id', '=', 'ishihara_plates.id')
+        ->where('ishihara_answers.ishihara_test_id', $id)
+        ->whereColumn('ishihara_answers.user_answer', '=', 'ishihara_plates.answer_key')
+        ->count();
+
+        $totalPlates = DB::table('ishihara_answers')
+        ->join('ishihara_plates', 'ishihara_answers.ishihara_plates_id', '=', 'ishihara_plates.id')
+        ->where('ishihara_answers.ishihara_test_id', $id)
+        ->count();
+
+        foreach ($profil as $row) {
+            $bornDate = Carbon::parse($row->born_date);
+            $age = $bornDate->diffInYears(Carbon::now());
+        }
+
+        if ($resultTotal > 5 && $resultTotal < 16) {
+            $hasilIshihara = "Buta Warna Parsial";
+        } elseif ($resultTotal < 5) {
+            $hasilIshihara = "Buta Warna Total";
+        } else {
+            $hasilIshihara = "Tidak Buta Warna";
+        }
+
+        $rgMH = DB::table('cambridge_rg_answers')
+        ->join('cambridge_rg_plates', 'cambridge_rg_answers.cambridgerg_plates_id', '=', 'cambridge_rg_plates.id')
+        ->where('cambridge_rg_answers.cambridge_test_id', $id)
+        ->where('cambridge_rg_answers.keywords', 'mh')
+        ->whereColumn('cambridge_rg_answers.user_answer', '=', 'cambridge_rg_plates.answer_key')
+        ->count();
+
+        $rgUB = DB::table('cambridge_rg_answers')
+        ->join('cambridge_rg_plates', 'cambridge_rg_answers.cambridgerg_plates_id', '=', 'cambridge_rg_plates.id')
+        ->where('cambridge_rg_answers.cambridge_test_id', $id)
+        ->where('cambridge_rg_answers.keywords', 'ub')
+        ->whereColumn('cambridge_rg_answers.user_answer', '=', 'cambridge_rg_plates.answer_key')
+        ->count();
+
+        $rgUH = DB::table('cambridge_rg_answers')
+        ->join('cambridge_rg_plates', 'cambridge_rg_answers.cambridgerg_plates_id', '=', 'cambridge_rg_plates.id')
+        ->where('cambridge_rg_answers.cambridge_test_id', $id)
+        ->where('cambridge_rg_answers.keywords', 'uh')
+        ->whereColumn('cambridge_rg_answers.user_answer', '=', 'cambridge_rg_plates.answer_key')
+        ->count();
+
+        $resultTotalBY = DB::table('cambridge_by_answers')
+        ->join('cambridge_by_plates', 'cambridge_by_answers.cambridgeby_plates_id', '=', 'cambridge_by_plates.id')
+        ->where('cambridge_by_answers.cambridge_test_id', $id)
+        ->whereColumn('cambridge_by_answers.user_answer', '=', 'cambridge_by_plates.answer_key')
+        ->count();
+
+        if (($rgMH < 4 || $rgUB < 4 || $rgUH < 3) && $resultTotalBY < 8) {
+            $hasilCambridge = "Parsial Merah-Hijau dan Biru-Kuning";
+        } elseif ($rgMH < 4 || $rgUB < 4 || $rgUH < 3) {
+            $hasilCambridge = "Parsial Merah-Hijau";
+        } elseif ($resultTotalBY < 8) {
+            $hasilCambridge = "Parsial Biru-Kuning";
+        } else {
+            $hasilCambridge = "";
+        }
+
+        return view('unduh-pdf', compact(
+            'profil',
+            'hasilIshihara',
+            'hasilCambridge',
+            'result',
+            'age',
+        ));
     }
 
     public function about()

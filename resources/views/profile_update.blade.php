@@ -22,7 +22,7 @@
             </ol>
         </div>
     </div>
-    <div class="row">
+    <div class="row pb-5">
         <div class="col-md-6 offset-md-3">
             <div class="card mt-2">
                 <div class="card-header card-profile">
@@ -81,7 +81,7 @@
                             @enderror
                         </div>
                         <div class="form-group mt-3">
-                            <label class="fw-bold">Alamat</label>
+                            <label class="fw-bold">Alamat:</label>
                             <textarea rows="2" class="form-control @error('address') @enderror" name="address">{{ $row->address }}</textarea>
                             @error('address')
                                 <div class="alert alert-warning mt-2">
@@ -90,7 +90,7 @@
                             @enderror
                         </div>
                         <div class="form-group mt-3">
-                            <label class="fw-bold">Desa / Kelurahan</label>
+                            <label class="fw-bold">Desa / Kelurahan:</label>
                             <input type="text" class="form-control text-capitalize @error('ward') @enderror" name="ward" value="{{ $row->ward }}">
                             @error('ward')
                                 <div class="alert alert-warning mt-2">
@@ -99,7 +99,7 @@
                             @enderror
                         </div>
                         <div class="form-group mt-3">
-                            <label class="fw-bold">Kecamatan</label>
+                            <label class="fw-bold">Kecamatan:</label>
                             <input type="text" class="form-control text-capitalize @error('subdistrict') @enderror" name="subdistrict" value="{{ $row->subdistrict }}">
                             @error('subdistrict')
                                 <div class="alert alert-warning mt-2">
@@ -108,7 +108,7 @@
                             @enderror
                         </div>
                         <div class="form-group mt-3">
-                            <label class="fw-bold">Kota</label>
+                            <label class="fw-bold">Kota:</label>
                             <input type="text" class="form-control text-capitalize @error('city') @enderror" name="city" value="{{ $row->city }}">
                             @error('city')
                                 <div class="alert alert-warning mt-2">
@@ -117,7 +117,7 @@
                             @enderror
                         </div>
                         <div class="form-group mt-3">
-                            <label class="fw-bold">Provinsi</label>
+                            <label class="fw-bold">Provinsi:</label>
                             <input type="text" class="form-control text-capitalize @error('province') @enderror" name="province" value="{{ $row->province }}">
                             @error('province')
                                 <div class="alert alert-warning mt-2">

@@ -26,7 +26,7 @@
                 <div class="card mb-5">
                     <div class="card-body m-3">
                         <div class="text-center">
-                            <h4 class="fw-bold">Hasil Test Ishihara</h4>
+                            <h4 class="fw-bold">Hasil Tes Ishihara</h4>
                         </div>
                         <div class="table-responsive pt-5">
                             <table class="table">

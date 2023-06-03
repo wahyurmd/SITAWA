@@ -70,7 +70,7 @@
             </a>
         </div>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-3 pb-5">
         <div class="col">
             <div class="card reminder-card">
                 <div class="card-title">

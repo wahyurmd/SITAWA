@@ -19,7 +19,7 @@ class UserController extends Controller
         ->select('users.*', 'profiles.*')
         ->where('users.id', Auth::user()->id)
         ->get();
-        
+
         return view('profile', compact('profile'));
     }
 
@@ -48,8 +48,6 @@ class UserController extends Controller
             'province' => 'required',
         ]);
 
-        // dd($request->all());
-
         $user = User::find($id);
         $user->name         = $request->name;
         $user->email        = $request->email;
@@ -66,29 +64,6 @@ class UserController extends Controller
         $profile->province      = $request->province;
         $profile->updated_at    = Carbon::now();
         $profile->save();
-
-        // DB::transaction(function () use ($request, $id) {
-        //     DB::table('users')
-        //     ->where('id', $id)
-        //     ->update([
-        //         'name'          => $request->name,
-        //         'email'         => $request->email,
-        //         'updated_at'    => Carbon::now(),
-        //     ]);
-
-        //     DB::table('profiles')
-        //     ->where('id', $id)
-        //     ->update([
-        //         'gender'        => $request->gender,
-        //         'born_date'     => $request->born_date,
-        //         'address'       => $request->address,
-        //         'ward'          => $request->ward,
-        //         'subdistrict'   => $request->subdistrict,
-        //         'city'          => $request->city,
-        //         'province'      => $request->province,
-        //         'updated_at'    => Carbon::now(),
-        //     ]);
-        // });
 
         return redirect('/profile')->with('success', 'Data profil berhasil di ubah.');
     }

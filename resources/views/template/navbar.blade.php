@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand text-light" href="">Tes Buta Warna</a>
+        <a class="navbar-brand text-light" href="{{ route('beranda') }}">Tes Buta Warna</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(255,255,255,1)"/></svg>
         </button>

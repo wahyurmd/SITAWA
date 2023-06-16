@@ -38,9 +38,10 @@ h6 {
 }
 .card .img-test {
   padding-top: 15px;
-  width: 220px;
+  width: 250px;
 }
-.card .a-custom {
+
+.a-custom {
   text-decoration: none;
   color: inherit;
 }
@@ -78,7 +79,24 @@ h6 {
   color: #f7f7ff;
 }
 
-footer {
-  background-color: #16bce6;
-  color: #f7f7ff;
+.fs-7 {
+  font-size: 12px;
+}
+
+.splide__slide img {
+  width: 100%;
+  height: auto;
+}
+
+.splide__arrow {
+  position: absolute;
+  top: 20px;
+}
+
+.splide__arrow--prev {
+  left: 20px;
+}
+
+.splide__arrow--next {
+  right: 20px;
 }/*# sourceMappingURL=style.css.map */

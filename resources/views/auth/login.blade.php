@@ -42,10 +42,6 @@
                                     </div>
                                 @enderror
                             </div>
-                            <!-- <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="remember" name="remember">
-                                <label class="form-check-label" for="remember">Remember me</label>
-                            </div> -->
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-color btn-block">Login</button>
                             </div>

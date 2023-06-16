@@ -72,7 +72,7 @@ class AuthController extends Controller
             'province' => $request->province,
         ]);
 
-        return redirect()->back()->with(['success' => 'Berhasil mendaftarkan akun.']);
+        return redirect()->route('login')->with(['success' => 'Berhasil mendaftarkan akun.']);
     }
 
     public function logout(Request $request)

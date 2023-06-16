@@ -29,8 +29,8 @@
                         <form action="{{ route('register.action') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Nama Lengkap</label>
-                                <input type="text" class="form-control @error('name') @enderror" name="name" placeholder="Masukkan nama lengkap" autocomplete="off">
+                                <label for="name">Nama Lengkap <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('name') @enderror text-capitalize" name="name" placeholder="Masukkan nama lengkap" autocomplete="off" value="{{ old('name') }}">
                                 @error('name')
                                     <div class="alert alert-warning mt-2">
                                         {{ $message }}
@@ -38,15 +38,15 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="gender">Jenis Kelamin:</label>
+                                <label for="gender">Jenis Kelamin: <span class="text-danger">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input @error('gender') @enderror" type="radio" name="gender" value="Laki-laki">
+                                    <input class="form-check-input @error('gender') @enderror" type="radio" name="gender" value="Laki-laki" {{ old('gender') == 'Laki-laki' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="laki_laki">
                                         Laki-laki
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input @error('gender') @enderror" type="radio" name="gender" value="Perempuan">
+                                    <input class="form-check-input @error('gender') @enderror" type="radio" name="gender" value="Perempuan" {{ old('gender') == 'Perempuan' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="perempuan">
                                         Perempuan
                                     </label>
@@ -58,8 +58,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control @error('email') @enderror" name="email" placeholder="Masukkan email" autocomplete="off">
+                                <label for="email">Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control @error('email') @enderror" name="email" placeholder="Masukkan email" autocomplete="off" value="{{ old('email') }}">
                                 @error('email')
                                     <div class="alert alert-warning mt-2">
                                         {{ $message }}
@@ -67,7 +67,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="password">Kata Sandi</label>
+                                <label for="password">Kata Sandi <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control @error('password') @enderror" name="password" placeholder="Masukkan kata sandi" autocomplete="off">
                                 @error('password')
                                     <div class="alert alert-warning mt-2">
@@ -76,7 +76,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="password_confirmation">Konfirmasi Kata Sandi</label>
+                                <label for="password_confirmation">Konfirmasi Kata Sandi <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control @error('password_confirmation') @enderror" name="password_confirmation" placeholder="Masukkan konfirmasi kata sandi" autocomplete="off">
                                 @error('password_confirmation')
                                     <div class="alert alert-warning mt-2">
@@ -85,8 +85,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="born-date">Tanggal Lahir</label>
-                                <input type="date" class="form-control @error('born_date') @enderror" name="born_date" placeholder="Masukkan tanggal lahir" autocomplete="off">
+                                <label for="born-date">Tanggal Lahir <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control @error('born_date') @enderror" name="born_date" placeholder="Masukkan tanggal lahir" autocomplete="off" value="{{ old('born_date') }}">
                                 @error('born_date')
                                     <div class="alert alert-warning mt-2">
                                         {{ $message }}
@@ -94,8 +94,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="address">Alamat</label>
-                                <textarea rows="2" class="form-control @error('address') @enderror" name="address"></textarea>
+                                <label for="address">Alamat <span class="text-danger">*</span></label>
+                                <textarea rows="2" class="form-control @error('address') @enderror text-capitalize" name="address">{{ old('address') }}</textarea>
                                 @error('address')
                                     <div class="alert alert-warning mt-2">
                                         {{ $message }}
@@ -103,8 +103,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="ward">Desa / Kelurahan</label>
-                                <input type="text" class="form-control @error('ward') @enderror" name="ward" placeholder="Masukkan desa/kelurahan" autocomplete="off">
+                                <label for="ward">Desa / Kelurahan <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('ward') @enderror text-capitalize" name="ward" placeholder="Masukkan desa/kelurahan" autocomplete="off" value="{{ old('subdistrict') }}">
                                 @error('ward')
                                     <div class="alert alert-warning mt-2">
                                         {{ $message }}
@@ -112,8 +112,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="subdistrict">Kecamatan</label>
-                                <input type="text" class="form-control @error('subdistrict') @enderror" name="subdistrict" placeholder="Masukkan kecamatan" autocomplete="off">
+                                <label for="subdistrict">Kecamatan <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('subdistrict') @enderror text-capitalize" name="subdistrict" placeholder="Masukkan kecamatan" autocomplete="off" value="{{ old('subdistrict') }}">
                                 @error('subdistrict')
                                     <div class="alert alert-warning mt-2">
                                         {{ $message }}
@@ -121,8 +121,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="city">Kota</label>
-                                <input type="text" class="form-control @error('city') @enderror" name="city" placeholder="Masukkan kota" autocomplete="off">
+                                <label for="city">Kota <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('city') @enderror text-capitalize" name="city" placeholder="Masukkan kota" autocomplete="off" value="{{ old('city') }}">
                                 @error('city')
                                     <div class="alert alert-warning mt-2">
                                         {{ $message }}
@@ -130,8 +130,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="province">Provinsi</label>
-                                <input type="text" class="form-control @error('province') @enderror" name="province" placeholder="Masukkan provinsi" autocomplete="off">
+                                <label for="province">Provinsi <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('province') @enderror text-capitalize" name="province" placeholder="Masukkan provinsi" autocomplete="off" value="{{ old('province') }}">
                                 @error('province')
                                     <div class="alert alert-warning mt-2">
                                         {{ $message }}

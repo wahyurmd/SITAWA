@@ -10,8 +10,6 @@
 
     @yield('content')
 
-    @include('template.footer')
-
     @include('template.script')
 </body>
 </html>

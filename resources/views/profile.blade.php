@@ -2,7 +2,7 @@
 @extends('template.master')
 
 <!-- Set Title -->
-@section('title', 'SINADU - Profil')
+@section('title', 'Profil - SITAWA')
 
 <!-- Main Content -->
 @section('content')
@@ -19,7 +19,7 @@
             </ol>
         </div>
     </div>
-    <div class="row">
+    <div class="row pb-5">
         <div class="col-md-6 offset-md-3">
             <div class="card mt-2">
                 <div class="card-header card-profile">
